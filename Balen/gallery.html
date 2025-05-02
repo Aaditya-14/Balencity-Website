@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | EYES ROLEPLAY</title>
+    <title>Gallery | BALEN CITY ROLEPLAY</title>
     <link rel="icon" type="image/x-icon" href="https://r2.fivemanage.com/2P9FjNbfkvdwqJtyhr4v5/sitelogo.webp">
     <meta name="description" content="View our gallery of server screenshots, videos, and community content from EYES ROLEPLAY."/>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -231,7 +231,66 @@ h1 {
     font-size: 0.9em;
   }
 }
+.info-box {
+      background-color: #2b2b3d;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      max-width: 90%;
+      margin: auto;
+    }
 
+    .info-box h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: #00bcd4;
+    }
+
+    .info-box p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #cccccc;
+    }
+
+    .info-box p span {
+      color: #00e676;
+      font-weight: bold;
+    }
+    .press-to-buy {
+      margin-bottom: 50px; /* added margin below */
+    }
+
+    .press-to-buy p {
+      font-size: 26px;
+      font-weight: bold;
+      color: #00e676;
+      text-shadow: 0 0 10px #00e676, 0 0 20px #00e67633;
+      animation: glowText 2s ease-in-out infinite alternate;
+    }
+
+    .press-to-buy i {
+      margin-right: 8px;
+    }
+
+    @keyframes glowText {
+      0% {
+        text-shadow: 0 0 8px #00e676, 0 0 16px #00e67633;
+      }
+      100% {
+        text-shadow: 0 0 18px #00e676, 0 0 28px #00e67655;
+      }
+    }
+
+    .fade-section {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.fade-section.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
 
   </style>
 </head>
@@ -539,6 +598,75 @@ h1 {
     });
   }
 </script>
+
+
+<!-- Press to Buy + Why EDM (wrapped in one container) -->
+<div id="introSections" class="fade-section">
+  <div class="press-to-buy">
+    <p>
+      <i class="fas fa-mouse-pointer"></i> Choose the EDM session you'd like to explore or support!
+    </p>
+  </div>
+
+  <div class="info-box">
+    <h2><i class="fas fa-question-circle"></i> Why EDM?</h2>
+    <p>
+      <span>EDM (Exclusive Donation Method)</span> is introduced to help support and maintain the server. 
+      Running a FiveM server involves multiple ongoing costs, including:
+      purchasing high-quality scripts, renting powerful VPS hosting, paying for custom development,
+      and ensuring smooth performance and security for all players. 
+      <br><br>
+      By contributing through EDM, you're helping us keep the server alive, active, and ever-improving. 
+      Every contribution directly benefits the community.
+    </p>
+  </div>
+</div>
+
+
+<!-- Replace your existing <script> at the bottom of the HTML with this -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.gallery-section').forEach(section => section.style.display = 'none');
+    document.querySelectorAll('.car-container, .business-container').forEach(el => el.style.display = 'none');
+  });
+
+  function showSection(id) {
+    // Fade out intro section smoothly
+    const intro = document.getElementById('introSections');
+    if (intro && !intro.classList.contains('fade-out')) {
+      intro.classList.add('fade-out');
+      setTimeout(() => {
+        intro.style.display = 'none';
+      }, 1000); // matches the transition duration
+    }
+
+    // Hide all gallery sections
+    document.querySelectorAll('.gallery-section').forEach(section => section.style.display = 'none');
+
+    // Show selected gallery section
+    const section = document.getElementById(id);
+    section.style.display = 'block';
+
+    // Show all cards by default
+    const selector = id === 'carGallery' ? '.car-container' : '.business-container';
+    section.querySelectorAll(selector).forEach(el => el.style.display = 'flex');
+  }
+
+  function filterGallery(type, filter) {
+    const selector = type === 'car' ? '.car-container' : '.business-container';
+    const elements = document.querySelectorAll(selector);
+
+    elements.forEach(el => {
+      const elType = el.getAttribute('data-category');
+      if (filter === 'all' || elType === filter) {
+        el.style.display = 'flex';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+  }
+</script>
+
 
       
     <!-- Footer -->
