@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | EYES ROLEPLAY</title>
+    <link rel="icon" type="image/x-icon" href="https://r2.fivemanage.com/2P9FjNbfkvdwqJtyhr4v5/sitelogo.webp">
+    <meta name="description" content="View our gallery of server screenshots, videos, and community content from EYES ROLEPLAY."/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+/* General */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom, #1c1c3c, #0f0f1a);
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 2.5em;
+  background: linear-gradient(90deg, #ff0057, #00eaff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Gallery Layout */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Card Containers */
+.car-container,
+.business-container {
+  background: #1d1d2e;
+  border-radius: 15px;
+  overflow: hidden;
+  flex: 0 1 calc(33.33% - 40px);
+  max-width: calc(33.33% - 40px);
+  margin: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-container:hover,
+.business-container:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 234, 255, 0.3);
+}
+
+/* Image Container */
+.car-img-container,
+.business-img-container {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+  background: #0f0f1a;
+}
+
+.car-container img,
+.business-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.car-container:hover img,
+.business-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Details Section */
+.car-details,
+.business-details {
+  padding: 20px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, #ff0057, #00eaff);
+  border-image-slice: 1;
+  border-radius: 0 0 15px 15px;
+  transition: background 0.3s ease, border-top 0.3s ease;
+}
+
+.car-details h3,
+.business-details h3 {
+  margin: 0 0 12px;
+  font-size: 1.5em;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.car-details p,
+.business-details p {
+  margin: 6px 0;
+  color: #bbbbbb;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+/* Availability Badge */
+.available {
+  color: #00ff9d;
+  font-weight: bold;
+}
+
+/* Buy Button */
+.buy-now-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #ff0057, #00eaff);
+  color: white;
+  font-weight: bold;
+  font-size: 0.95em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.buy-now-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+.buy-now-btn:hover::before {
+  left: 125%;
+}
+
+.buy-now-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 234, 255, 0.5);
+}
+
+/* Filter Buttons */
+.filter-buttons,
+.sub-filter-buttons {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-buttons button,
+.sub-filter-buttons button {
+  margin: 5px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background-color: rgba(255, 0, 87, 0.8);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(255, 0, 87, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-buttons button:hover,
+.sub-filter-buttons button:hover {
+  background-color: rgba(0, 234, 255, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 234, 255, 0.4);
+}
+
+.filter-buttons button::before,
+.sub-filter-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.filter-buttons button:hover::before,
+.sub-filter-buttons button:hover::before {
+  left: 100%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .car-container,
+  .business-container {
+    flex: 0 1 calc(50% - 30px);
+    max-width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 600px) {
+  .car-container,
+  .business-container {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+
+  .filter-buttons button,
+  .sub-filter-buttons button {
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+    </style>
+
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#10b981',
+              secondary: '#22d3ee',
+              tertiary: '#0ea5e9',
+              dark: '#0f172a',
+              'dark-light': '#1e293b'
+            },
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+            }
+          }
+        }
+      }
+      
+    </script>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body class="bg-dark text-white font-sans">
+    <!-- Scroll Buttons -->
+    <div class="fixed right-6 bottom-24 z-[9999] hidden md:block">
+      <button id="scrollToTop" class="bg-primary/20 backdrop-blur-xl p-4 rounded-full shadow-2xl hover:bg-primary/30 transition-all duration-300 group opacity-0 invisible scale-90 hover:scale-110">
+        <i class="fas fa-chevron-up text-xl text-primary group-hover:text-white transition-all duration-300"></i>
+        <div class="absolute -inset-1 bg-primary/20 rounded-full blur opacity-0 group-hover:opacity-50 transition-all duration-300"></div>
+      </button>
+    </div>
+    <div class="fixed right-6 top-1/2 -translate-y-1/2 z-[9999] hidden md:block">
+      <button id="scrollToBottom" class="bg-primary/20 backdrop-blur-xl p-4 rounded-full shadow-2xl hover:bg-primary/30 transition-all duration-300 group opacity-0 invisible scale-90 hover:scale-110">
+        <i class="fas fa-chevron-down text-xl text-primary group-hover:text-white transition-all duration-300"></i>
+        <div class="absolute -inset-1 bg-primary/20 rounded-full blur opacity-0 group-hover:opacity-50 transition-all duration-300"></div>
+      </button>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-[#1a1d24]/95 backdrop-blur-md shadow-lg fixed w-full z-10">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center gap-1">
+              <span class="text-[#10b981]">BALEN CITY </span> <span class="text-white">ROLEPLAY</span>
+              <div class="flex items-center gap-1 ml-2">
+                <span class="relative group">
+                  <span class="absolute -inset-1 bg-gradient-to-r from-[#f59e0b] to-[#d97706] rounded-full blur opacity-30 group-hover:opacity-60 transition duration-300"></span>
+                  <i class="fas fa-crown text-[#f59e0b] text-xs group-hover:scale-110 transition-all duration-300"></i>
+                </span>
+                <span class="relative group">
+                  <span class="absolute -inset-1 bg-gradient-to-r from-[#10b981] to-[#059669] rounded-full blur opacity-30 group-hover:opacity-60 transition duration-300"></span>
+                  <i class="fas fa-star text-[#10b981] text-xs group-hover:scale-110 transition-all duration-300"></i>
+                </span>
+                <span class="relative group">
+                  <span class="absolute -inset-1 bg-gradient-to-r from-[#3b82f6] to-[#2563eb] rounded-full blur opacity-30 group-hover:opacity-60 transition duration-300"></span>
+                  <i class="fas fa-gem text-[#3b82f6] text-xs group-hover:scale-110 transition-all duration-300"></i>
+                </span>
+              </div>
+            </a>
+          </div>
+          <div class="hidden md:flex space-x-6">
+            <a href="index.html" class="text-white hover:text-[#10b981] transition duration-300">Home</a>
+            <a href="about.html" class="text-white hover:text-[#10b981] transition duration-300">About</a>
+            <a href="server.html" class="text-white hover:text-[#10b981] transition duration-300">Server</a>
+            <a href="gallery.html" class="text-[#10b981] border-b-2 border-[#10b981] pb-1 transition duration-300">EDM Gallery</a>
+            <a href="contact.html" class="text-white hover:text-[#10b981] transition duration-300">Contact</a>
+            <div class="relative group hidden md:block">
+              <button class="text-white hover:text-[#10b981] transition duration-300 flex items-center gap-1">
+                Legal
+                <i class="fas fa-chevron-down text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+              </button>
+              <div class="absolute left-0 mt-2 w-48 bg-[#1a1d24]/95 backdrop-blur-md rounded-lg shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <a href="terms.html" class="block px-4 py-2 text-white hover:text-[#10b981] hover:bg-dark/50 transition duration-300 flex items-center gap-2">
+                  <i class="fas fa-file-contract text-xs"></i>
+                  Terms of Service
+                </a>
+                <a href="privacy.html" class="block px-4 py-2 text-white hover:text-[#10b981] hover:bg-dark/50 transition duration-300 flex items-center gap-2">
+                  <i class="fas fa-shield-alt text-xs"></i>
+                  Privacy Policy
+                </a>
+                <a href="rules.html" class="block px-4 py-2 text-white hover:text-[#10b981] hover:bg-dark/50 transition duration-300 flex items-center gap-2">
+                  <i class="fas fa-gavel text-xs"></i>
+                  Rules
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-button" class="text-white hover:text-[#10b981] focus:outline-none p-2">
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-[#1a1d24]/95 backdrop-blur-md transition-all duration-300 ease-in-out">
+        <div class="px-6 py-4 space-y-3">
+          <div class="text-2xl font-bold mb-6">
+            <span class="text-white">Gallery</span>
+            <span class="text-[#10b981]">Showcase</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-8">View our server screenshots and media content</p>
+          
+          <!-- Navigation Links -->
+          <div class="space-y-3">
+            <a href="index.html" class="block text-lg text-white hover:text-[#10b981] transition duration-300">Home</a>
+            <a href="about.html" class="block text-lg text-white hover:text-[#10b981] transition duration-300">About</a>
+            <a href="server.html" class="block text-lg text-white hover:text-[#10b981] transition duration-300">Server</a>
+            <a href="gallery.html" class="block text-lg text-[#10b981] font-medium">Gallery</a>
+            <a href="contact.html" class="block text-lg text-white hover:text-[#10b981] transition duration-300">Contact</a>
+            <!-- Legal links removed from mobile menu -->
+          </div>
+
+
+
+          <!-- Server Status -->
+          
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-dark-light">
+      <div class="absolute inset-0 overflow-hidden opacity-20">
+        <img src="https://preview.redd.it/ru3zrlk8iz051.png?auto=webp&s=2f8789bc2ee6dc11102f273dae3ee7582b0f7340" alt="Background" class="w-full h-full object-cover">
+      </div>
+      <div class="container mx-auto px-4 relative z-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">EDM<span class="text-primary">Gallery</span></h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+          Explore our collection of EDM Vehicles and Business
+        </p>
+      </div>
+    </header>
+    
+
+    <h1>Car Gallery & Business Directory</h1>
+
+<div class="filter-buttons">
+  <button onclick="showSection('carGallery')">EDM Car Gallery</button>
+  <button onclick="showSection('businessGallery')">Business Directory</button>
+</div>
+
+<!-- Car Gallery Section -->
+<div class="gallery-section" id="carGallery">
+  <div class="sub-filter-buttons">
+    <button onclick="filterGallery('car', 'all')">All</button>
+    <button onclick="filterGallery('car', 'sports')">Sports</button>
+    <button onclick="filterGallery('car', 'classic')">Classic</button>
+    <button onclick="filterGallery('car', 'super')">Super</button>
+    <button onclick="filterGallery('car', 'luxury')">Luxury</button>
+  </div>
+  <div class="gallery">
+    <!-- Car 1 -->
+    <div class="car-container" data-category="super">
+      <div class="car-img-container">
+        <img src="EDM Photo/mustang.jpg" alt="Ford Mustang">
+      </div>
+      <div class="car-details">
+        <h3>Ford Mustang 1969</h3>
+        <p><strong>Top Speed:</strong> 190 km/h</p>
+        <p><strong>Feature:</strong> V8 Engine, Restored</p>
+        <p class="available">Available</p>
+        <a href="https://discord.com/channels/1145849168577974363/1201880742833950770" class="buy-now-btn" target="_blank">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Car 2 -->
+    <div class="car-container" data-category="luxury">
+      <div class="car-img-container">
+        <img src="EDM Photo/luxurycar.jpg" alt="Luxury Car">
+      </div>
+      <div class="car-details">
+        <h3>Luxury Car 2020</h3>
+        <p><strong>Top Speed:</strong> 250 km/h</p>
+        <p><strong>Feature:</strong> Modern Technology, Comfortable</p>
+        <p class="available">Available</p>
+        <a href="https://discord.com/channels/1145849168577974363/1201880742833950770" class="buy-now-btn" target="_blank">Buy Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Business Gallery Section -->
+<div class="gallery-section" id="businessGallery">
+  <div class="sub-filter-buttons">
+    <button onclick="filterGallery('business', 'all')">All</button>
+    <button onclick="filterGallery('business', 'mechanic')">Mechanic and PDM</button>
+    <button onclick="filterGallery('business', 'ammunation')">Ammunation</button>
+    <button onclick="filterGallery('business', 'recycle')">Recycle</button>
+    <button onclick="filterGallery('business', 'restaurant')">Restaurant</button>
+    <button onclick="filterGallery('business', 'petrolpump')">Petrol Pump</button>
+  </div>
+
+  <!-- Gallery Starts -->
+  <div class="gallery">
+
+    <!-- Mechanic -->
+    <div class="business-container" data-category="mechanic">
+      <div class="business-img-container">
+        <img src="EDM Photo/families.webp" alt="Mechanic Business">
+      </div>
+      <div class="business-details">
+        <h3>Families Mechanic</h3>
+        <p><strong>Location:</strong> New York</p>
+        <button style="background-color: grey; color: white; text-decoration: line-through; font-weight: bold; border: none; padding: 10px 20px; cursor: not-allowed;" disabled>Soldout</button>
+      </div>
+    </div>
+
+    <!-- Other mechanics, restaurants ... -->
+
+    <!-- Petrol Pump -->
+    <div class="business-container" data-category="petrolpump">
+      <div class="business-img-container">
+        <img src="EDM Photo/petrolpump.png" alt="Petrol Pump">
+      </div>
+      <div class="business-details">
+        <h3>Petrol Pump</h3>
+        <p><strong>Location:</strong> Texas</p>
+        <a href="https://discord.com/channels/1145849168577974363/1201880742833950770" class="buy-now-btn" target="_blank">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- restaurant  -->
+    <div class="business-container" data-category="restaurant">
+      <div class="business-img-container">
+        <img src="EDM Photo/ammunation.png" alt="restaurant">
+      </div>
+      <div class="business-details">
+        <h3>SeinorBuns</h3>
+        <p><strong>Location:</strong> Texas</p>
+        <a href="https://discord.com/channels/1145849168577974363/1201880742833950770" class="buy-now-btn" target="_blank">Buy Now</a>
+      </div>
+    </div>
+    <div class="business-container" data-category="restaurant">
+      <div class="business-img-container">
+        <img src="EDM Photo/ammunation.png" alt="restaurant">
+      </div>
+      <div class="business-details">
+        <h3>SeinorBuns</h3>
+        <p><strong>Location:</strong> Texas</p>
+        <a href="https://discord.com/channels/1145849168577974363/1201880742833950770" class="buy-now-btn" target="_blank">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Ammunation -->
+    <div class="business-container" data-category="ammunation">
+      <div class="business-img-container">
+        <img src="EDM Photo/ammunation.png" alt="Ammunation">
+      </div>
+      <div class="business-details">
+        <h3>Ammunation near Alta</h3>
+        <p><strong>Location:</strong> Texas</p>
+        <a href="https://discord.com/channels/1145849168577974363/1201880742833950770" class="buy-now-btn" target="_blank">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- Recycle -->
+    <div class="business-container" data-category="recycle">
+      <div class="business-img-container">
+        <img src="EDM Photo/recycle.png" alt="Recycle Center">
+      </div>
+      <div class="business-details">
+        <h3>Recycle 1</h3>
+        <p><strong>Location:</strong> Texas</p>
+        <a href="https://discord.com/channels/1145849168577974363/1201880742833950770" class="buy-now-btn" target="_blank">Buy Now</a>
+      </div>
+    </div>
+
+  </div> <!-- END of gallery -->
+</div> <!-- END of businessGallery section -->
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.gallery-section').forEach(section => section.style.display = 'none');
+    document.querySelectorAll('.car-container, .business-container').forEach(el => el.style.display = 'none');
+  });
+
+  function showSection(id) {
+    document.querySelectorAll('.gallery-section').forEach(section => section.style.display = 'none');
+    const section = document.getElementById(id);
+    section.style.display = 'block';
+    section.querySelectorAll('.car-container, .business-container').forEach(el => el.style.display = 'none');
+  }
+
+  function filterGallery(type, filter) {
+    const selector = type === 'car' ? '.car-container' : '.business-container';
+    const elements = document.querySelectorAll(selector);
+  
+    elements.forEach(el => {
+      const elType = el.getAttribute('data-category');
+      if (filter === 'all' || elType === filter) {
+        el.style.display = 'flex';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+      
+    <!-- Footer -->
+    <footer class="bg-dark py-8">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <!-- Column 1 -->
+          <div>
+            <a href="index.html" class="text-2xl font-bold text-primary">BALEN CITY <span class="text-white">ROLEPLAY</span></a>
+            <p class="mt-4 text-gray-400">Experience the most immersive FiveM roleplay server with custom scripts, vehicles, and active community.</p>
+          </div>
+          
+          <!-- Column 2 -->
+          <div>
+            <h4 class="text-white font-bold mb-4">Navigation</h4>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-primary transition duration-300">Home</a></li>
+              <li><a href="about.html" class="text-gray-400 hover:text-primary transition duration-300">About</a></li>
+              <li><a href="server.html" class="text-gray-400 hover:text-primary transition duration-300">Server</a></li>
+              <li><a href="gallery.html" class="text-primary transition duration-300">EDM Gallery</a></li>
+              <li><a href="contact.html" class="text-gray-400 hover:text-primary transition duration-300">Contact</a></li>
+            </ul>
+          </div>
+          
+          <!-- Column 3 -->
+          <div>
+            <h4 class="text-white font-bold mb-4">Legal</h4>
+            <ul class="space-y-2">
+              <li><a href="terms.html" class="text-gray-400 hover:text-primary transition duration-300">Terms of Service</a></li>
+              <li><a href="privacy.html" class="text-gray-400 hover:text-primary transition duration-300">Privacy Policy</a></li>
+              <li><a href="rules.html" class="text-gray-400 hover:text-primary transition duration-300">Rules</a></li>
+            </ul>
+          </div>
+          
+          <!-- Column 4 -->
+          <div>
+            <h4 class="text-white font-bold mb-4">Connect</h4>
+            <div class="flex space-x-4">
+              <a href="https://discord.gg/mptQFhM8" class="text-gray-400 hover:text-primary transition duration-300">
+                <i class="fab fa-discord text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                <i class="fab fa-youtube text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+            </div>
+            <!-- Footer IP -->
+            <div class="mt-4">
+              <p class="text-gray-400">Server IP:</p>
+              <div class="flex items-center mt-1">
+                <code class="text-[#10b981] text-sm server-connection select-all cursor-pointer">fivem://connect/odrrdy</code>
+                <button class="copy-button text-gray-400 hover:text-[#10b981] p-2 rounded-lg transition-all duration-300 hover:bg-[#10b981]/10 group/btn cursor-pointer ml-2">
+                  <i class="fas fa-copy group-hover/btn:scale-110 transition-transform duration-300"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="border-gray-800 my-6">
+        
+        <div class="text-center text-gray-500 text-sm">
+          <p>&copy; 2023 BALEN CITY ROLEPLAY. All rights reserved.</p>
+          <p class="mt-2">Not affiliated with Rockstar Games, Inc. or Take-Two Interactive Software, Inc.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html> 
